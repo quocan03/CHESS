@@ -1,0 +1,103 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #ffc4da, #dbfbff);
+  height: 100vh;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  padding: 20px;
+}
+
+#hint {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+#chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 160px);
+  grid-template-rows: repeat(8, 160px);
+  border: 5px solid rgba(0, 251, 255, 0.622);
+  box-shadow: 10px 10px 10px rgba(0, 251, 255, 0.622);
+  margin: auto;
+}
+
+.square {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  user-select: none;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.white {
+  background-color: rgba(230, 230, 230, 0.2);
+}
+
+.black {
+  background-color: pink;
+}
+
+.square:hover {
+  filter: brightness(1.1);
+  cursor: pointer;
+}
+
+.piece {
+  font-size: 48px;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.selected {
+  outline: 3px solid rgb(197, 197, 24);
+  box-shadow: inset 0 0 10px yellow;
+}
+
+.valid-move::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  background: rgba(80, 82, 80, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.capture-move::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 0, 0, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checked-king {
+  border: 3px solid red;
+  background-color: red;
+}
+
+@keyframes blink {
+  from {
+    border-color: red;
+    background-color: red;
+  }
+  to {
+    border-color: darkred;
+  }
+}
